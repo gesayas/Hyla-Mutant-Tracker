@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="missionControl">
+	<head>
+		<title>Mission Control</title>
+		<link href="content/css/styles.css" rel="stylesheet" type="text/css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js">﻿</script>
+		<script src="app/lib/jquery-3.2.1.min.js"></script>
+		<script src="app/app.js"></script>
+	</head>
+	<body ng-controller="missionController">
+		<div class="expander" ng-click="slide('#enterM')">
+			<h1>Enter a Mutant</h1>
+			<form class="slider" id="enterM" ng-submit="addElement('skillContainer', mutantName, 'mutants', 'mName', 0)" ng-click="$event.stopPropagation()">
+				<input id="mName" type="text" placeholder="Mutant name" ng-model="mutantName"/>
+				<div id="skillContainer"></div>
+				<button type="button" class="addButton" ng-click="addTrait('skillContainer', 'Ability ', 0)">Add Ability</button>
+				<input type="submit" value="Submit Mutant"/>
+			</form>
+		</div>
+		<div class="expander" ng-click="slide('#searchM')">
+			<h1>Search and Assemble Mutants</h1>
+			<input class="slider" id="searchM" type="text" placeHolder="Search by Ability" ng-click="$event.stopPropagation()" ng-keyup="updateShowing()" ng-model="mutantAbility"/>
+			<div>
+				<table ng-click="$event.stopPropagation()">
+					<tbody id="mutantContainer"></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="expander" ng-click="slide('#enterE')">
+			<h1>Enter an Event</h1>
+			<form class="slider" id="enterE" ng-submit="addElement('detailContainer', eventName, 'events', 'eName', 1)" ng-click="$event.stopPropagation()">
+				<input id="eName" type="text" placeholder="Event name" ng-model="eventName"/>
+				<div id="detailContainer"></div>
+				<button type="button" class="addButton" ng-click="addTrait('detailContainer', 'Detail ', 1)">Add Detail</button>
+				<input type="submit" value="Submit Event"/>
+			</form>
+		</div>
+		<div>
+			<h1>Team View</h1>
+			<table>
+				<tbody id="team"></tbody>
+			</table>
+		</div>
+	</body>
+</html>
